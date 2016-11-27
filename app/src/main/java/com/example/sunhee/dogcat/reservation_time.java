@@ -1,6 +1,12 @@
 package com.example.sunhee.dogcat;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.icu.util.Calendar;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +37,7 @@ public class reservation_time extends AppCompatActivity implements View.OnClickL
         reser_register.setOnClickListener(this);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onClick(View v) {
         int reser_hour = reser_time.getHour();
@@ -44,8 +51,8 @@ public class reservation_time extends AppCompatActivity implements View.OnClickL
         s_open("RESER_FEED");
         Toast.makeText(context, reser_hour + " hour, " + reser_min + "min, " + amount + "g", Toast.LENGTH_LONG).show();
 
-     /*Intent intent = new Intent(this, AlarmReceiver.class);
-        PendingIntent sender = PendingIntent.getBroadcast(this, 0, intent, 0);
+        Intent receiverintent = new Intent(this, AlarmReceiver.class);
+        PendingIntent sender = PendingIntent.getBroadcast(this, 0, receiverintent, 0);
 
         Calendar calendar = Calendar.getInstance();
 
@@ -54,7 +61,7 @@ public class reservation_time extends AppCompatActivity implements View.OnClickL
 
         AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 
-        am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);*/
+        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000 * 60 * 60 * 24, sender);
     }
 
     void s_open(String send_message)
