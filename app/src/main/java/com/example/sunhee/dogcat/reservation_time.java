@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class reservation_time extends AppCompatActivity implements View.OnClickListener{
 
     private String add = "";
-    private int port = 8000;
+    private int port = 8888;
 
     Button reser_register;
     EditText reser_amount;

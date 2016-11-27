@@ -25,6 +25,13 @@ public class VideoCall extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_call);
 
+        sp = getSharedPreferences("dogcat", MODE_PRIVATE);
+        add = sp.getString("IP", "");
+
+        String video_url = "";
+
+        video_url = "http://" + add + ":8080/stream/video.mjpeg";
+
         wv = (WebView) findViewById(R.id.pi_video);
         wv.setWebViewClient(new WebViewClient());
         wv.setBackgroundColor(255);
@@ -34,10 +41,7 @@ public class VideoCall extends AppCompatActivity implements View.OnClickListener
         ws = wv.getSettings();
         ws.setJavaScriptEnabled(true);
 
-        wv.loadUrl("http://192.168.0.3:8080/stream/video.mjpeg");
-
-        sp = getSharedPreferences("dogcat", MODE_PRIVATE);
-        add = sp.getString("IP", "");
+        wv.loadUrl(video_url);
 
         videofeed = (Button) findViewById(R.id.bt_videofeed);
         videofeed.setOnClickListener(this);
