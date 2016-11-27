@@ -28,7 +28,8 @@
             android:process=":remote" />
 
         <activity android:name=".Register" />
-        <activity android:name=".VideoCall"></activity>
+        <activity android:name=".VideoCall" />
+        <activity android:name=".Health"></activity>
     </application>
 
 </manifest>
