@@ -48,4 +48,13 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/bt_reservation"
         android:layout_marginStart="22dp" />
+
+    <Button
+        android:text="health"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_feed"
+        android:layout_alignStart="@+id/bt_video"
+        android:layout_marginTop="21dp"
+        android:id="@+id/bt_health" />
 </RelativeLayout>

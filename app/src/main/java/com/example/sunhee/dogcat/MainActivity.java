@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int port = 8888;
 
     SharedPreferences sp;
-    Button reser, feed, video;
+    Button reser, feed, video, health;
     TextView recieveText;
 
     @Override
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         feed = (Button) findViewById(R.id.bt_feed);
         reser = (Button) findViewById(R.id.bt_reservation);
         video = (Button) findViewById(R.id.bt_video);
+        health = (Button) findViewById(R.id.bt_health);
 
 
         sp = getSharedPreferences("dogcat", MODE_PRIVATE);
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         reser.setOnClickListener(this);
         feed.setOnClickListener(this);
         video.setOnClickListener(this);
+        health.setOnClickListener(this);
     }
 
     @Override
@@ -69,6 +71,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bt_video :
                 Intent intent2 = new Intent(this, VideoCall.class);
                 startActivity(intent2);
+                finish();
+                break;
+            case R.id.bt_health :
+                Intent intent3 = new Intent(this, Health.class);
+                startActivity(intent3);
                 finish();
                 break;
         }

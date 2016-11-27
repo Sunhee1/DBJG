@@ -34,7 +34,7 @@ public class VideoCall extends AppCompatActivity implements View.OnClickListener
         ws = wv.getSettings();
         ws.setJavaScriptEnabled(true);
 
-        wv.loadUrl("http://192.168.0.17:8080/stream/video.mjpeg");
+        wv.loadUrl("http://192.168.0.3:8080/stream/video.mjpeg");
 
         sp = getSharedPreferences("dogcat", MODE_PRIVATE);
         add = sp.getString("IP", "");
