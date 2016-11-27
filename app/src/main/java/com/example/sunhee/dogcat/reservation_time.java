@@ -56,8 +56,9 @@ public class reservation_time extends AppCompatActivity implements View.OnClickL
 
         Calendar calendar = Calendar.getInstance();
 
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.add(Calendar.SECOND, 5);
+        calendar.set(Calendar.HOUR, reser_hour);
+        calendar.set(Calendar.MINUTE, reser_min);
+        calendar.set(Calendar.SECOND, 0);
 
         AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 
