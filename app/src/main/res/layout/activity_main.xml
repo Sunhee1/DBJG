@@ -57,4 +57,21 @@
         android:layout_alignBottom="@+id/bt_feed"
         android:layout_alignEnd="@+id/bt_video"
         android:layout_marginEnd="11dp" />
+
+    <Button
+        android:text="info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_feed"
+        android:layout_alignStart="@+id/bt_feed"
+        android:layout_marginTop="51dp"
+        android:id="@+id/bt_info" />
+
+    <Button
+        android:text="temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/bt_info"
+        android:layout_alignEnd="@+id/bt_health"
+        android:id="@+id/bt_temp" />
 </RelativeLayout>

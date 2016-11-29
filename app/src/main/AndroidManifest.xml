@@ -3,7 +3,7 @@
     package="com.example.sunhee.dogcat">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
@@ -31,7 +31,8 @@
 
         <activity android:name=".Register" />
         <activity android:name=".VideoCall" />
-        <activity android:name=".Health"></activity>
+        <activity android:name=".Health" />
+        <activity android:name=".Temperature"></activity>
     </application>
 
 </manifest>

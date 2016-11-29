@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -48,7 +49,7 @@ public class reservation_time extends AppCompatActivity implements View.OnClickL
         amount = Integer.parseInt(a);
 
         Context context = getApplicationContext();
-        s_open("RESER_FEED");
+        //s_open("RESER_FEED");
         Toast.makeText(context, reser_hour + " hour, " + reser_min + "min, " + amount + "g", Toast.LENGTH_LONG).show();
 
         Intent receiverintent = new Intent(this, AlarmReceiver.class);
