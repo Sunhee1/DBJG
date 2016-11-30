@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -32,7 +33,8 @@
         <activity android:name=".Register" />
         <activity android:name=".VideoCall" />
         <activity android:name=".Health" />
-        <activity android:name=".Temperature"></activity>
+        <activity android:name=".Temperature" />
+        <activity android:name=".userinfo"></activity>
     </application>
 
 </manifest>

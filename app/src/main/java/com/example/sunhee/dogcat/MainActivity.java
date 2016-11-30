@@ -1,5 +1,6 @@
 package com.example.sunhee.dogcat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -82,6 +83,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.bt_info :
+                Intent intent4 = new Intent(this, userinfo.class);
+                startActivity(intent4);
+                finish();
                 break;
             case R.id.bt_temp :
                 Intent intent5 = new Intent(this, Temperature.class);
