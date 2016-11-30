@@ -48,26 +48,6 @@
         android:layout_marginTop="23dp"
         android:id="@+id/textView5" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/et_wishtemp"
-        android:layout_alignTop="@+id/textView5"
-        android:layout_alignStart="@+id/tv_nowtemp"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_toStartOf="@+id/textView4"
-        android:hint="22" />
-
-    <TextView
-        android:text="℃"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/et_wishtemp"
-        android:layout_alignStart="@+id/textView4"
-        android:id="@+id/textView6" />
-
     <Button
         android:text="UP"
         android:layout_width="wrap_content"
@@ -85,4 +65,34 @@
         android:layout_toEndOf="@+id/bt_tempup"
         android:layout_marginStart="44dp"
         android:id="@+id/bt_tempdown" />
+
+    <Button
+        android:text="register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_tempup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:id="@+id/bt_tempok" />
+
+    <TextView
+        android:text="℃"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:layout_alignBaseline="@+id/et_wishtemp"
+        android:layout_alignBottom="@+id/et_wishtemp"
+        android:layout_alignStart="@+id/textView4" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/et_wishtemp"
+        android:hint="22"
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignStart="@+id/tv_nowtemp" />
+
 </RelativeLayout>
