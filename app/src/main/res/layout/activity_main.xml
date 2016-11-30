@@ -10,44 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sunhee.dogcat.MainActivity">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bt_feed"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="84dp"
-        android:id="@+id/recieveText" />
-
-    <Button
-        android:text="feed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="87dp"
-        android:id="@+id/bt_feed"
-        android:layout_below="@+id/bt_video"
-        android:layout_alignEnd="@+id/recieveText" />
-
-    <Button
-        android:text="video"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bt_video"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="37dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="reservation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bt_reservation"
-        android:layout_alignBaseline="@+id/bt_video"
-        android:layout_alignBottom="@+id/bt_video"
-        android:layout_alignStart="@+id/bt_feed" />
-
     <Button
         android:text="health"
         android:layout_width="wrap_content"
@@ -59,19 +21,59 @@
         android:layout_marginEnd="11dp" />
 
     <Button
-        android:text="info"
+        android:text="feed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_feed"
-        android:layout_alignStart="@+id/bt_feed"
-        android:layout_marginTop="51dp"
-        android:id="@+id/bt_info" />
+        android:id="@+id/bt_feed"
+        android:layout_marginStart="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="68dp" />
+
+    <Button
+        android:text="video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_video"
+        android:layout_marginEnd="48dp"
+        android:layout_alignBaseline="@+id/bt_reservation"
+        android:layout_alignBottom="@+id/bt_reservation"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/bt_info"
-        android:layout_alignEnd="@+id/bt_health"
-        android:id="@+id/bt_temp" />
+        android:id="@+id/bt_temp"
+        android:layout_alignBaseline="@+id/bt_info"
+        android:layout_alignBottom="@+id/bt_info"
+        android:layout_alignStart="@+id/bt_video"
+        android:layout_marginStart="11dp" />
+
+    <Button
+        android:text="reservation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_reservation"
+        android:layout_marginTop="46dp"
+        android:layout_below="@+id/bt_feed"
+        android:layout_alignStart="@+id/bt_feed" />
+
+    <Button
+        android:text="info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_info"
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/bt_reservation"
+        android:layout_alignStart="@+id/bt_reservation" />
+
+    <Button
+        android:text="Feed amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_amount"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/bt_info"
+        android:layout_alignStart="@+id/bt_info" />
 </RelativeLayout>

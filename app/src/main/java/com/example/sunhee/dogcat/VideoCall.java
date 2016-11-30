@@ -37,9 +37,12 @@ public class VideoCall extends AppCompatActivity implements View.OnClickListener
         sp = getSharedPreferences("dogcat", MODE_PRIVATE);
         add = sp.getString("IP", "");
 
+        add = "192.168.1.99";
+
         String video_url = "";
 
-        video_url = "http://" + add + ":8080/stream/video.mjpeg";
+        //video_url = "http://" + add + ":8080/stream/video.mjpeg";
+        video_url = "http://192.168.1.99:8080/stream/video.mjpeg";
 
         wv = (WebView) findViewById(R.id.pi_video);
         wv.setWebViewClient(new WebViewClient());
@@ -66,49 +69,9 @@ public class VideoCall extends AppCompatActivity implements View.OnClickListener
                 s_open("FEED");
                 break;
             case R.id.bt_capture :
-                screenshot(v);
                 break;
         }
     }
-
-    public void screenshot(View view){
-        Toast.makeText(this, "1", Toast.LENGTH_LONG).show();
-        view.setDrawingCacheEnabled(true);
-        Bitmap screentshot = view.getDrawingCache();
-
-        Calendar date;
-        int year, month, day, hour, min;
-
-        year = month = day = hour = min = 0;
-
-        date = Calendar.getInstance();
-        year = date.get(Calendar.YEAR);
-        month = date.get(Calendar.MONTH) + 1;
-        day = date.get(Calendar.DAY_OF_MONTH);
-        hour = date.get(Calendar.HOUR);
-        min = date.get(Calendar.MINUTE);
-
-        String filename = "screenshot/" + year + "_" + month + "_" + day + "/" + hour + ":" + min + ".png";
-
-        if(screentshot != null) {
-            try {
-                Toast.makeText(this, "2", Toast.LENGTH_LONG).show();
-                File f = new File(Environment.getDataDirectory(), filename);
-                f.createNewFile();
-
-                OutputStream outStream = new FileOutputStream(f);
-                screentshot.compress(Bitmap.CompressFormat.PNG, 100, outStream);
-                outStream.close();
-
-            } catch (IOException e) {
-                Toast.makeText(this, "3", Toast.LENGTH_LONG).show();
-                e.printStackTrace();
-            }
-        }
-
-        view.setDrawingCacheEnabled(false);
-    }
-
     void s_open(String send_message)
     {
         ClientTask myClientTask = new ClientTask(add, port, send_message);
