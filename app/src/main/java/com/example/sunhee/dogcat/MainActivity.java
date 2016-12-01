@@ -1,14 +1,11 @@
 package com.example.sunhee.dogcat;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -39,9 +36,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sp = getSharedPreferences("dogcat", MODE_PRIVATE);
         boolean hasVisited = sp.getBoolean("hasVisited", false);
 
-        String aaa = hasVisited + "?!";
-        Toast.makeText(MainActivity.this, aaa, Toast.LENGTH_SHORT).show();
-
         if(!hasVisited){ // application 최초 설치 시에만 device와의 연결을 위해 ip 등록
             Intent i2 = new Intent(getApplicationContext(), Register.class);
             startActivity(i2);
@@ -52,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         add = sp.getString("IP", "");
+        add = "192.168.1.99";
 
         reser.setOnClickListener(this);
         feed.setOnClickListener(this);
@@ -67,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch(v.getId()) {
             case R.id.bt_reservation :
-                Intent intent = new Intent(this, Reservation.class);
+                Intent intent = new Intent(this, reservation_time.class);
                 startActivity(intent);
                 break;
             case R.id.bt_feed :
@@ -83,8 +78,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent3);
                 break;
             case R.id.bt_info :
-                Intent intent4 = new Intent(this, userinfo.class);
-                startActivity(intent4);
+                //Intent intent4 = new Intent(this, userinfo.class);
+                //startActivity(intent4);
                 break;
             case R.id.bt_temp :
                 Intent intent5 = new Intent(this, Temperature.class);
@@ -99,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     void s_open(String send_message)
     {
-        ClientTask myClientTask = new ClientTask("192.168.1.99", port, send_message);
+        ClientTask myClientTask = new ClientTask(add, port, send_message);
         myClientTask.execute();
     }
 }
