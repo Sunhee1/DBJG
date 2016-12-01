@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.icu.util.Calendar;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class reservation_time extends AppCompatActivity implements View.OnClickListener{
 
@@ -36,9 +37,17 @@ public class reservation_time extends AppCompatActivity implements View.OnClickL
         reser_time = (TimePicker) findViewById(R.id.reser_time);
 
         reser_register.setOnClickListener(this);
+
+        Intent iinn = new Intent(this, AlarmReceiver.class);
+        PendingIntent op1 = PendingIntent.getBroadcast(this, 0, iinn, PendingIntent.FLAG_NO_CREATE);
+
+        if(op1 == null){
+            Toast.makeText(reservation_time.this, "NO.", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(reservation_time.this, "YES.", Toast.LENGTH_LONG).show();
+        }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onClick(View v) {
         int reser_hour = reser_time.getHour();
@@ -49,21 +58,23 @@ public class reservation_time extends AppCompatActivity implements View.OnClickL
         amount = Integer.parseInt(a);
 
         Context context = getApplicationContext();
-        //s_open("RESER_FEED");
-        Toast.makeText(context, reser_hour + " hour, " + reser_min + "min, " + amount + "g", Toast.LENGTH_LONG).show();
 
         Intent receiverintent = new Intent(this, AlarmReceiver.class);
-        PendingIntent sender = PendingIntent.getBroadcast(this, 0, receiverintent, 0);
+        PendingIntent sender = PendingIntent.getBroadcast(this, 0, receiverintent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(Calendar.HOUR, reser_hour);
+        calendar.set(Calendar.HOUR_OF_DAY, reser_hour);
         calendar.set(Calendar.MINUTE, reser_min);
         calendar.set(Calendar.SECOND, 0);
 
         AlarmManager am = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 
         am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000 * 60 * 60 * 24, sender);
+
+        Toast.makeText(context, reser_hour + "시 " + reser_min + "분 예약 완료.", Toast.LENGTH_LONG).show();
+
+        finish();
     }
 
     void s_open(String send_message)

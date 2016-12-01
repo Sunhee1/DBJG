@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
+    private String add = "192.168.1.99";
+    private int port = 8888;
+
     private NotificationManager ntmanager;
     private Notification.Builder ntbuilder;
 
@@ -31,7 +34,15 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         ntmanager.notify(111, ntbuilder.build());
 
+        s_open("FEED");
+
         Toast.makeText(context, "alarm", Toast.LENGTH_LONG).show();
         // 라즈베리파이에 사료 배식하라고 명령 보내기
+    }
+
+    void s_open(String send_message)
+    {
+        ClientTask myClientTask = new ClientTask(add, port, send_message);
+        myClientTask.execute();
     }
 }

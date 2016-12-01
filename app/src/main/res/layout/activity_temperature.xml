@@ -67,7 +67,7 @@
         android:id="@+id/bt_tempdown" />
 
     <Button
-        android:text="register"
+        android:text="등록"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bt_tempup"

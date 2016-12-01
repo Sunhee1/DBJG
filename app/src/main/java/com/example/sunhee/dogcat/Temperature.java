@@ -35,7 +35,8 @@ public class Temperature extends AppCompatActivity implements View.OnClickListen
         temp_down.setOnClickListener(this);
         temp_ok.setOnClickListener(this);
 
-        now_temperature = wish_temperature = 10;
+        now_temperature = 21;
+        wish_temperature = 23;
         temp_str = "" + now_temperature;
         now_temp.setText(temp_str);
 
@@ -45,6 +46,7 @@ public class Temperature extends AppCompatActivity implements View.OnClickListen
 
         SharedPreferences sp = getSharedPreferences("dogcat", MODE_PRIVATE);
         add = sp.getString("IP", "");
+        add = "192.168.1.99";
     }
 
     @Override

@@ -22,10 +22,11 @@ public class Health extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences("dogcat", MODE_PRIVATE);
         add = sp.getString("IP", "");
+        add = "192.168.1.99";
 
         s_open("week_feed");
 
-        values = new float[]{100.0f, (float) 44.4, 33, 55, 60, 70, 24, 30, 0.0f};
+        values = new float[]{100.0f, 44, 33, 55, 60, 70, 24, 30, 0.0f};
         goals = new float[]{100.0f, 60, 40, 55, 80, 90, 50, 20, 0.0f};
 
         verlabels = new String[]{"1100", "900", "700", "500", "300", "100", "0 (g)"};
