@@ -36,7 +36,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         s_open("FEED");
 
-        Toast.makeText(context, "alarm", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "예약 배식이 되었습니다.", Toast.LENGTH_LONG).show();
         // 라즈베리파이에 사료 배식하라고 명령 보내기
     }
 

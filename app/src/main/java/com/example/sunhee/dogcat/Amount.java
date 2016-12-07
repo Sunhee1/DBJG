@@ -27,6 +27,8 @@ public class Amount extends AppCompatActivity {
 
         amount_text = "70%";
         amount.setText(amount_text);
+
+        //this.onResume();
     }
 
     void s_open(String send_message)

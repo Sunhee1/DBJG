@@ -42,9 +42,9 @@ public class reservation_time extends AppCompatActivity implements View.OnClickL
         PendingIntent op1 = PendingIntent.getBroadcast(this, 0, iinn, PendingIntent.FLAG_NO_CREATE);
 
         if(op1 == null){
-            Toast.makeText(reservation_time.this, "NO.", Toast.LENGTH_LONG).show();
+            Toast.makeText(reservation_time.this, "예약 없음.", Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(reservation_time.this, "YES.", Toast.LENGTH_LONG).show();
+            Toast.makeText(reservation_time.this, "예약 있음.", Toast.LENGTH_LONG).show();
         }
     }
 

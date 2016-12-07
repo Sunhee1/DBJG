@@ -55,7 +55,7 @@ public class Temperature extends AppCompatActivity implements View.OnClickListen
             case R.id.bt_tempup:
                 if(count < 9) {
                     count++;
-                    wish_temperature = now_temperature + count;
+                    wish_temperature = wish_temperature + count;
                     temp_str = "" + wish_temperature;
                     wish_temp.setText(temp_str);
                 }else{
@@ -66,7 +66,7 @@ public class Temperature extends AppCompatActivity implements View.OnClickListen
             case R.id.bt_tempdown:
                 if(count > -9) {
                     count--;
-                    wish_temperature = now_temperature + count;
+                    wish_temperature = wish_temperature + count;
                     temp_str = "" + wish_temperature;
                     wish_temp.setText(temp_str);
                 }else{
@@ -75,10 +75,10 @@ public class Temperature extends AppCompatActivity implements View.OnClickListen
                 }
                 break;
             case R.id.bt_tempok:
-                temp_count = Integer.parseInt(wish_temp.getText().toString()) - now_temperature;
+                temp_count = Integer.parseInt(wish_temp.getText().toString());
                 send_msg = "wish/" + temp_count;
                 Toast.makeText(Temperature.this, send_msg, Toast.LENGTH_SHORT).show();
-                //s_open(send_msg);
+                s_open(send_msg);
                 finish();
                 break;
         }

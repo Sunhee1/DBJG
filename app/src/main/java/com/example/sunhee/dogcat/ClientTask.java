@@ -17,13 +17,17 @@ import java.net.UnknownHostException;
 public class ClientTask extends AsyncTask<Void, Void, Void> {
     String s_add;
     int s_port;
-    String re_msg = "";
+    String re_msg = "rere";
     String send_msg = "";
 
     ClientTask(String addr, int port, String message){
         s_add = addr;
         s_port = port;
         send_msg = message;
+    }
+
+    public String getRe_msg(){
+        return re_msg;
     }
 
     @Override
@@ -49,6 +53,7 @@ public class ClientTask extends AsyncTask<Void, Void, Void> {
                 re_msg += byteArrayOutputStream.toString("UTF-8");
             }
             re_msg = "receive msg :  " + re_msg;
+
 
         } catch (UnknownHostException e) {
             e.printStackTrace();

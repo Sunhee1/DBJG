@@ -10,6 +10,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.File;
@@ -27,7 +28,7 @@ public class VideoCall extends AppCompatActivity implements View.OnClickListener
 
     WebView wv;
     WebSettings ws;
-    Button videofeed, videocapture;
+    ImageButton videofeed, videocapture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class VideoCall extends AppCompatActivity implements View.OnClickListener
 
         wv.loadUrl(video_url);
 
-        videofeed = (Button) findViewById(R.id.bt_videofeed);
+        videofeed = (ImageButton) findViewById(R.id.bt_videofeed);
 //        videocapture = (Button) findViewById(R.id.bt_capture);
 
         videofeed.setOnClickListener(this);
