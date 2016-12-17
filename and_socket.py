@@ -29,12 +29,10 @@ print('socket now listening')
 
 board = Arduino('/dev/ttyACM0')
 
-#pin_button = board.get_pin('d:9:i')
 pin_motor = board.get_pin('d:8:o')
 it = util.Iterator(board)
 it.start()
 
-#pin_button.enable_reporting()
 print('arduino start')   
 
 
@@ -65,10 +63,8 @@ def do_somestuffs_with_input(input_string):
         up_temp = int(split_str[1])
         updatewish(up_temp)     
         input_string = "reservation feeding"
-    elif input_string == "right":
-        input_string = "right gogo"
     else:
-        input_string = input_string + " NO"
+        input_string = "none"
 
     return input_string
 
