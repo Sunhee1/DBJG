@@ -5,7 +5,10 @@ import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.widget.Toast;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by sunhee on 2016-11-23.
@@ -18,6 +21,14 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     private NotificationManager ntmanager;
     private Notification.Builder ntbuilder;
+
+    int amount = 100;
+
+    AlarmReceiver(String re_add, int re_amount){
+        add = re_add;
+        amount = re_amount;
+    }
+
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -34,7 +45,10 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         ntmanager.notify(111, ntbuilder.build());
 
-        s_open("FEED");
+        int count = (amount / 100) + 1;
+        if(amount % 100 == 0) count--;
+
+        for(int i = 0; i < count; i++) s_open("FEED");
 
         Toast.makeText(context, "예약 배식이 되었습니다.", Toast.LENGTH_LONG).show();
         // 라즈베리파이에 사료 배식하라고 명령 보내기

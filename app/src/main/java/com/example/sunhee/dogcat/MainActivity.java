@@ -1,5 +1,7 @@
 package com.example.sunhee.dogcat;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,7 +10,10 @@ import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -29,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     SharedPreferences sp;
     ImageButton reser, feed, video, health, info, temp, feedamount;
+    CheckBox info_chk;
+
+    ConnectThread c_thread = new ConnectThread();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +54,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         reser = (ImageButton) findViewById(R.id.bt_reservation);
         video = (ImageButton) findViewById(R.id.bt_video);
         health = (ImageButton) findViewById(R.id.bt_health);
-        //info = (Button) findViewById(R.id.bt_info);
+        info = (ImageButton) findViewById(R.id.bt_info);
         temp = (ImageButton) findViewById(R.id.bt_temp);
         feedamount = (ImageButton) findViewById(R.id.bt_amount);
+        info_chk = (CheckBox) findViewById(R.id.cb_info);
 
         sp = getSharedPreferences("dogcat", MODE_PRIVATE);
         boolean hasVisited = sp.getBoolean("hasVisited", false);
@@ -62,20 +71,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             sp_editor.commit();
         }
 
-        add = sp.getString("IP", "");
-
-        //ConnectThread c_thread = new ConnectThread();
-        //c_thread.set_ip(add);
-        //c_thread.run();
+         add = sp.getString("IP", "");
 
         reser.setOnClickListener(this);
         feed.setOnClickListener(this);
         video.setOnClickListener(this);
         health.setOnClickListener(this);
-//      info.setOnClickListener(this);
+        info.setOnClickListener(this);
         temp.setOnClickListener(this);
         feedamount.setOnClickListener(this);
+        info_chk.setOnCheckedChangeListener(mCheckChange);
     }
+
+    CompoundButton.OnCheckedChangeListener mCheckChange = new CompoundButton.OnCheckedChangeListener() {
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if(buttonView.getId() == R.id.cb_info){
+                if(isChecked) {
+                    c_thread.start();
+                }else{
+                    if(c_thread.isAlive())
+                        c_thread.stop();
+                }
+            }
+        }
+    };
 
     @Override
     public void onClick(View v) {
@@ -93,25 +114,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent2);
                 break;
             case R.id.bt_health :
-                Intent intent3 = new Intent(this, Health.class);
-                startActivity(intent3);
+                if(info_chk.isChecked()) {
+                    Intent intent3 = new Intent(this, Health.class);
+                    intent3.putExtra("re_feed", re_feed);
+                    intent3.putExtra("re_water", re_water);
+                    startActivity(intent3);
+                }else{
+                    Toast.makeText(getApplicationContext(), "정보 수집에 check해 주세요.", Toast.LENGTH_LONG).show();
+                }
                 break;
-            //case R.id.bt_info :
-                //Intent intent4 = new Intent(this, userinfo.class);
-                //startActivity(intent4);
-              //  break;
+            case R.id.bt_info :
+                Intent intent4 = new Intent(this, userinfo.class);
+                startActivity(intent4);
+                break;
             case R.id.bt_temp :
-                Intent intent5 = new Intent(this, Temperature.class);
-                intent5.putExtra("re_temp", re_temp);
-                intent5.putExtra("re_wish", re_wishtemp);
-                startActivity(intent5);
+                if(info_chk.isChecked()) {
+                    Intent intent5 = new Intent(this, Temperature.class);
+                    intent5.putExtra("re_temp", re_temp);
+                    intent5.putExtra("re_wish", re_wishtemp);
+                    startActivity(intent5);
+                }else{
+                    Toast.makeText(getApplicationContext(), "정보 수집에 check해 주세요.", Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.bt_amount :
-                Intent intent6 = new Intent(this, Amount.class);
-                intent6.putExtra("re_amount", re_amount);
-                startActivity(intent6);
+                if(info_chk.isChecked()) {
+                    Intent intent6 = new Intent(this, Amount.class);
+                    intent6.putExtra("re_amount", re_amount);
+                    startActivity(intent6);
+                }else{
+                    Toast.makeText(getApplicationContext(), "정보 수집에 check해 주세요.", Toast.LENGTH_LONG).show();
+                }
                 break;
         }
+    }
+
+    void notice_sound(){
+        Context context = getApplicationContext();
+        NotificationManager ntmanager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification.Builder ntbuilder = new Notification.Builder(context);
+
+        ntbuilder.setSmallIcon(R.mipmap.ic_launcher);
+        ntbuilder.setTicker("돌봐줄개(예약 배식)");
+        ntbuilder.setContentTitle("돌봐줄개");
+        ntbuilder.setContentText("반려동물이 짖고 있습니다.");
+        ntbuilder.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE);
+        ntbuilder.setAutoCancel(true);
+
+        ntmanager.notify(111, ntbuilder.build());
     }
 
     void s_open(String send_message, int PORT)
@@ -137,6 +187,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             s_open("sound", port2);
             s_open("week_feed", port2);
             s_open("week_water", port2);
+            if(re_sound == 1) notice_sound();
         }
     }
 
@@ -175,10 +226,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             } catch (UnknownHostException e) {
                 e.printStackTrace();
-                re_msg = "UnknownHostException: " + e.toString();
+                re_msg = "UnknownHostException";
             } catch (IOException e) {
                 e.printStackTrace();
-                re_msg = "IOException: " + e.toString();
+                re_msg = "IOException";
             }finally{
                 if(socket != null){
                     try {
@@ -205,5 +256,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             else if(send_msg.equals("week_feed")) re_feed = re_msg;
             else if(send_msg.equals("week_water")) re_water = re_msg;
         }
+
     }
 }

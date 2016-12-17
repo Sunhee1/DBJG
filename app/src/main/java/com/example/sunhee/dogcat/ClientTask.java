@@ -17,7 +17,7 @@ import java.net.UnknownHostException;
 public class ClientTask extends AsyncTask<Void, Void, Void> {
     String s_add;
     int s_port;
-    String re_msg = "rere";
+    String re_msg = "re_msg";
     String send_msg = "";
 
     ClientTask(String addr, int port, String message){
@@ -52,15 +52,14 @@ public class ClientTask extends AsyncTask<Void, Void, Void> {
                 byteArrayOutputStream.write(buffer, 0, bytesRead);
                 re_msg += byteArrayOutputStream.toString("UTF-8");
             }
-            re_msg = "receive msg :  " + re_msg;
 
 
         } catch (UnknownHostException e) {
             e.printStackTrace();
-            re_msg = "UnknownHostException: " + e.toString();
+            re_msg = "UnknownHostException";
         } catch (IOException e) {
             e.printStackTrace();
-            re_msg = "IOException: " + e.toString();
+            re_msg = "IOException";
         }finally{
             if(socket != null){
                 try {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -10,66 +11,89 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sunhee.dogcat.MainActivity">
 
-    <Button
-        android:text="reservation"
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/bt_reservation"
-        android:layout_marginTop="46dp"
-        android:layout_below="@+id/bt_feed"
-        android:layout_alignStart="@+id/bt_feed" />
-
-    <Button
-        android:text="info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bt_info"
-        android:layout_marginTop="38dp"
-        android:layout_below="@+id/bt_reservation"
-        android:layout_alignStart="@+id/bt_reservation" />
-
-    <Button
-        android:text="Feed amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bt_amount"
-        android:layout_marginTop="32dp"
-        android:layout_below="@+id/bt_info"
-        android:layout_alignStart="@+id/bt_info" />
-
-    <Button
-        android:text="feed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bt_feed"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="42dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="video"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_video"
+        android:layout_alignTop="@+id/bt_reservation"
+        android:layout_alignEnd="@+id/bt_health"
         android:id="@+id/bt_video"
-        android:layout_marginStart="26dp"
-        android:layout_alignBaseline="@+id/bt_reservation"
-        android:layout_alignBottom="@+id/bt_reservation"
-        android:layout_toEndOf="@+id/bt_amount" />
+        android:background="@drawable/ic_video"
+        android:onClick="onClick (MainActivity)" />
 
-    <Button
-        android:text="temp"
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/bt_temp"
-        android:layout_above="@+id/bt_amount"
-        android:layout_alignStart="@+id/bt_video" />
+        app:srcCompat="@drawable/ic_amount"
+        android:id="@+id/bt_amount"
+        android:background="@drawable/ic_amount"
+        android:layout_alignTop="@+id/bt_temp"
+        android:layout_alignStart="@+id/bt_video"
+        android:onClick="onClick (MainActivity)" />
 
-    <Button
-        android:text="health"
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_health"
+        android:layout_marginEnd="59dp"
         android:id="@+id/bt_health"
-        android:layout_above="@+id/bt_reservation"
-        android:layout_alignStart="@+id/bt_video" />
+        android:background="@drawable/ic_health"
+        android:onClick="onClick (MainActivity)"
+        android:layout_alignTop="@+id/bt_feed"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_reservation"
+        android:id="@+id/bt_reservation"
+        android:background="@drawable/ic_reservation"
+        android:onClick="onClick (MainActivity)"
+        android:layout_below="@+id/bt_feed"
+        android:layout_alignStart="@+id/bt_feed"
+        android:layout_marginTop="76dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_temp"
+        android:id="@+id/bt_temp"
+        android:background="@drawable/ic_temp"
+        android:onClick="onClick (MainActivity)"
+        android:layout_below="@+id/bt_reservation"
+        android:layout_alignStart="@+id/bt_reservation"
+        android:layout_marginTop="76dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_info"
+        android:id="@+id/bt_info"
+        android:background="@drawable/ic_info"
+        android:layout_below="@+id/bt_temp"
+        android:layout_alignStart="@+id/bt_temp"
+        android:layout_marginTop="49dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_feed"
+        android:id="@+id/bt_feed"
+        android:background="@drawable/ic_feed"
+        android:layout_marginStart="48dp"
+        android:onClick="onClick (MainActivity)"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="39dp" />
+
+    <CheckBox
+        android:text="정보 수집을 하시겠습니까?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_info"
+        android:buttonTint="#f00"
+        android:layout_alignTop="@+id/bt_info"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="28dp" />
+
 </RelativeLayout>

@@ -9,6 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/*
+ Application 최초 설치 시에만 작동되는 class
+ Raspberry Pi 기기와의 연동을 위해 IP를 설정하는 과정
+*/
+
 public class Register extends AppCompatActivity implements View.OnClickListener{
 
     Button ip_register;

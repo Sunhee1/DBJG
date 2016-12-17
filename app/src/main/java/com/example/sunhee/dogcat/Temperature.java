@@ -1,5 +1,6 @@
 package com.example.sunhee.dogcat;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,18 +36,18 @@ public class Temperature extends AppCompatActivity implements View.OnClickListen
         temp_down.setOnClickListener(this);
         temp_ok.setOnClickListener(this);
 
-        now_temperature = 21;
-        wish_temperature = 23;
-        temp_str = "" + now_temperature;
+        Intent temp_intent = getIntent();
+        now_temperature = temp_intent.getIntExtra("re_temp", 21);
+        wish_temperature = temp_intent.getIntExtra("re_wish", 23);
+
+        temp_str = Integer.toString(now_temperature);
         now_temp.setText(temp_str);
 
-        //s_open("wish_temp");
-        temp_str = "" + wish_temperature;
+        temp_str = Integer.toString(wish_temperature);
         wish_temp.setText(temp_str);
 
         SharedPreferences sp = getSharedPreferences("dogcat", MODE_PRIVATE);
         add = sp.getString("IP", "");
-        add = "192.168.1.99";
     }
 
     @Override
@@ -55,22 +56,22 @@ public class Temperature extends AppCompatActivity implements View.OnClickListen
             case R.id.bt_tempup:
                 if(count < 9) {
                     count++;
-                    wish_temperature = wish_temperature + count;
-                    temp_str = "" + wish_temperature;
+                    wish_temperature++;
+                    temp_str = Integer.toString(wish_temperature);
                     wish_temp.setText(temp_str);
                 }else{
-                    send_msg = "Hot!";
+                    send_msg = "온도 설정이 너무 높습니다.";
                     Toast.makeText(Temperature.this, send_msg, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.bt_tempdown:
                 if(count > -9) {
                     count--;
-                    wish_temperature = wish_temperature + count;
-                    temp_str = "" + wish_temperature;
+                    wish_temperature--;
+                    temp_str = Integer.toString(wish_temperature);
                     wish_temp.setText(temp_str);
                 }else{
-                    send_msg = "Cold!";
+                    send_msg = "온도 설정이 너무 낮습니다.";
                     Toast.makeText(Temperature.this, send_msg, Toast.LENGTH_SHORT).show();
                 }
                 break;
@@ -86,7 +87,7 @@ public class Temperature extends AppCompatActivity implements View.OnClickListen
 
     void s_open(String send_message)
     {
-        ClientTask myClientTask = new ClientTask("192.168.1.99", port, send_message);
+        ClientTask myClientTask = new ClientTask(add, port, send_message);
         myClientTask.execute();
     }
 }

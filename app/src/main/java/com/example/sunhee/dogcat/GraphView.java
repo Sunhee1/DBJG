@@ -6,10 +6,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 
-/**
- * Created by sunhee on 2016-11-27.
- */
-
 public class GraphView extends View {
 
     public static boolean BAR = true;

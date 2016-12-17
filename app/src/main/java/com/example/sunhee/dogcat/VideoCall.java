@@ -38,12 +38,9 @@ public class VideoCall extends AppCompatActivity implements View.OnClickListener
         sp = getSharedPreferences("dogcat", MODE_PRIVATE);
         add = sp.getString("IP", "");
 
-        add = "192.168.1.99";
-
         String video_url = "";
 
-        //video_url = "http://" + add + ":8080/stream/video.mjpeg";
-        video_url = "http://192.168.1.99:8080/stream/video.mjpeg";
+        video_url = "http://" + add + ":8080/stream/video.mjpeg";
 
         wv = (WebView) findViewById(R.id.pi_video);
         wv.setWebViewClient(new WebViewClient());
@@ -81,7 +78,6 @@ public class VideoCall extends AppCompatActivity implements View.OnClickListener
     }
 
     public void screenshot(View view){
-        //Toast.makeText(this, "1", Toast.LENGTH_LONG).show();
         view.setDrawingCacheEnabled(true);
         Bitmap screentshot = view.getDrawingCache();
 
@@ -101,7 +97,6 @@ public class VideoCall extends AppCompatActivity implements View.OnClickListener
 
         if(screentshot != null) {
             try {
-       //         Toast.makeText(this, "2", Toast.LENGTH_LONG).show();
                 File f = new File(Environment.getExternalStorageDirectory(), filename);
                 f.createNewFile();
 
@@ -110,7 +105,6 @@ public class VideoCall extends AppCompatActivity implements View.OnClickListener
                 outStream.close();
 
             } catch (IOException e) {
-               // Toast.makeText(this, "3", Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
         }

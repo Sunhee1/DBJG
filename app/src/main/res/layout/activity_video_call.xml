@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_video_call"
     android:layout_width="match_parent"
@@ -19,13 +20,14 @@
         android:layout_marginTop="13dp"
         android:id="@+id/pi_video" />
 
-    <Button
-        android:text="feed"
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_feed"
         android:id="@+id/bt_videofeed"
+        android:background="@drawable/ic_feed"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="107dp" />
+        android:layout_marginBottom="73dp" />
 
 </RelativeLayout>

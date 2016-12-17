@@ -10,4 +10,103 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sunhee.dogcat.userinfo">
 
+    <TextView
+        android:text="이름 : "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="48dp"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="생년월일 :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:id="@+id/textView8"
+        android:layout_below="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <TextView
+        android:text="몸무게 :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView8"
+        android:layout_alignStart="@+id/textView8"
+        android:layout_marginTop="28dp"
+        android:id="@+id/textView9" />
+
+    <Button
+        android:text="정보 등록"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:id="@+id/bt_info_register"
+        android:layout_below="@+id/textView9"
+        android:layout_alignStart="@+id/textView9" />
+
+    <Button
+        android:text="사료량 추천"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/bt_info_register"
+        android:layout_toEndOf="@+id/bt_info_register"
+        android:layout_marginStart="52dp"
+        android:id="@+id/bt_recom" />
+
+    <TextView
+        android:text="추천 사료량 : "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_info_register"
+        android:layout_alignStart="@+id/bt_info_register"
+        android:layout_marginTop="72dp"
+        android:id="@+id/textView10" />
+
+    <TextView
+        android:text="상단의 추천 버튼을 눌러주세요."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView10"
+        android:layout_toEndOf="@+id/textView10"
+        android:layout_marginStart="18dp"
+        android:id="@+id/tv_recom" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/et_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toEndOf="@+id/textView8"
+        android:hint="이름" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/et_name"
+        android:layout_toEndOf="@+id/textView8"
+        android:id="@+id/et_birth"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:hint="생년월일" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/et_we"
+        android:hint="몸무게"
+        android:layout_alignBaseline="@+id/textView9"
+        android:layout_alignBottom="@+id/textView9"
+        android:layout_alignStart="@+id/et_birth"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
 </RelativeLayout>
